@@ -8,6 +8,11 @@ namespace Lab05_MultiForm
         public Form1()
         {
             InitializeComponent();
+
+            // Đăng ký sự kiện TextChanged theo thời gian thực
+            this.txtMaSV.TextChanged += new System.EventHandler(this.Input_TextChanged);
+            this.txtHoTen.TextChanged += new System.EventHandler(this.Input_TextChanged);
+            this.txtDiemTB.TextChanged += new System.EventHandler(this.Input_TextChanged);
         }
 
         // Phương thức kiểm tra dữ liệu đầu vào sử dụng ErrorProvider
@@ -16,21 +21,18 @@ namespace Lab05_MultiForm
             errorProvider1.Clear();
             bool valid = true;
 
-            // 1. Kiểm tra Mã sinh viên không được để trống
             if (string.IsNullOrWhiteSpace(txtMaSV.Text))
             {
                 errorProvider1.SetError(txtMaSV, "Nhập mã sinh viên");
                 valid = false;
             }
 
-            // 2. Kiểm tra Họ tên không được để trống
             if (string.IsNullOrWhiteSpace(txtHoTen.Text))
             {
                 errorProvider1.SetError(txtHoTen, "Nhập họ tên");
                 valid = false;
             }
 
-            // 3. Kiểm tra Điểm trung bình (phải từ 0 đến 10)[cite: 16]
             if (string.IsNullOrWhiteSpace(txtDiemTB.Text))
             {
                 errorProvider1.SetError(txtDiemTB, "Nhập điểm trung bình");
@@ -56,7 +58,7 @@ namespace Lab05_MultiForm
             return valid;
         }
 
-        // Sự kiện giới hạn ký tự nhập vào ô txtDiemTB (chỉ cho phép số và một dấu chấm)
+        // Giới hạn ký tự nhập vào ô txtDiemTB
         private void txtDiemTB_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsControl(e.KeyChar)) return;
@@ -65,13 +67,21 @@ namespace Lab05_MultiForm
             e.Handled = true;
         }
 
+        // Cập nhật trạng thái và xem trước theo thời gian thực
+        private void Input_TextChanged(object sender, EventArgs e)
+        {
+            double diem;
+            bool hopLe = double.TryParse(txtDiemTB.Text, out diem)
+                && diem >= 0 && diem <= 10;
+
+            lblXemTruoc.Text = txtMaSV.Text + " - " + txtHoTen.Text;
+            lblTrangThai.Text = hopLe ? "Dữ liệu điểm hợp lệ" : "Kiểm tra điểm";
+        }
+
         // Sự kiện click nút Lưu
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            // Nếu dữ liệu không hợp lệ thì dừng lại, không cho lưu
             if (!ValidateInput()) return;
-
-            // Nếu dữ liệu hợp lệ, thực hiện lưu thành công
             MessageBox.Show("Dữ liệu hợp lệ, tiến hành lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

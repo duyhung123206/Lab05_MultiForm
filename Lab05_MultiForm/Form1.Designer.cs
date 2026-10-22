@@ -37,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDiemTB = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblXemTruoc = new System.Windows.Forms.Label();
+            this.lblTrangThai = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +64,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(134, 211);
+            this.btnLuu.Location = new System.Drawing.Point(134, 378);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 2;
@@ -105,11 +107,33 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Điểm TB";
             // 
+            // lblXemTruoc
+            // 
+            this.lblXemTruoc.AutoSize = true;
+            this.lblXemTruoc.Location = new System.Drawing.Point(44, 207);
+            this.lblXemTruoc.Name = "lblXemTruoc";
+            this.lblXemTruoc.Size = new System.Drawing.Size(44, 16);
+            this.lblXemTruoc.TabIndex = 7;
+            this.lblXemTruoc.Text = "label4";
+            this.lblXemTruoc.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // lblTrangThai
+            // 
+            this.lblTrangThai.AutoSize = true;
+            this.lblTrangThai.Location = new System.Drawing.Point(44, 251);
+            this.lblTrangThai.Name = "lblTrangThai";
+            this.lblTrangThai.Size = new System.Drawing.Size(44, 16);
+            this.lblTrangThai.TabIndex = 8;
+            this.lblTrangThai.Text = "label5";
+            this.lblTrangThai.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTrangThai);
+            this.Controls.Add(this.lblXemTruoc);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDiemTB);
             this.Controls.Add(this.label2);
@@ -135,6 +159,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDiemTB;
+        private System.Windows.Forms.Label lblTrangThai;
+        private System.Windows.Forms.Label lblXemTruoc;
     }
 }
 
