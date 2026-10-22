@@ -35,6 +35,8 @@
             this.btnLuu = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtDiemTB = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +62,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(134, 182);
+            this.btnLuu.Location = new System.Drawing.Point(134, 211);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 2;
@@ -86,11 +88,30 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Họ và tên";
             // 
+            // txtDiemTB
+            // 
+            this.txtDiemTB.Location = new System.Drawing.Point(134, 154);
+            this.txtDiemTB.Name = "txtDiemTB";
+            this.txtDiemTB.Size = new System.Drawing.Size(132, 22);
+            this.txtDiemTB.TabIndex = 5;
+            this.txtDiemTB.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(44, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Điểm TB";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtDiemTB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLuu);
@@ -112,6 +133,8 @@
         private System.Windows.Forms.TextBox txtMaSV;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDiemTB;
     }
 }
 
