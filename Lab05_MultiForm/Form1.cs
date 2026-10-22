@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lab05_MultiForm
@@ -15,6 +8,33 @@ namespace Lab05_MultiForm
         public Form1()
         {
             InitializeComponent();
+        }
+
+        // Đặt hàm ValidateInput() và sự kiện ở đây (bên trong class Form1)
+        private bool ValidateInput()
+        {
+            errorProvider1.Clear();
+            bool valid = true;
+
+            if (string.IsNullOrWhiteSpace(txtMaSV.Text))
+            {
+                errorProvider1.SetError(txtMaSV, "Nhập mã sinh viên");
+                valid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtHoTen.Text))
+            {
+                errorProvider1.SetError(txtHoTen, "Nhập họ tên");
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (!ValidateInput()) return;
+            MessageBox.Show("Dữ liệu hợp lệ!");
         }
     }
 }
