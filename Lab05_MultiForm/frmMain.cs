@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Lab05_MultiForm
@@ -32,7 +33,7 @@ namespace Lab05_MultiForm
             OpenChildForm(new frmChiTietSinhVien(null));
         }
 
-        // 2. Hàm xử lý logic mở form Tìm kiếm chung
+        // 2. Hàm xử lý logic mở form Tìm kiếm
         private void mnuTimKiem_Click(object sender, EventArgs e)
         {
             formTimKiem frm = new formTimKiem();
@@ -44,10 +45,38 @@ namespace Lab05_MultiForm
             }
         }
 
-        // 3. Hàm sự kiện liên kết trực tiếp với thanh Menu trên giao diện thiết kế
+        // Liên kết menu Tìm kiếm trên giao diện thiết kế
         private void tìmKiếmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mnuTimKiem_Click(sender, e);
+        }
+
+        // 3. Hàm xử lý logic mở form Chọn khoa
+        private void mnuChonKhoa_Click(object sender, EventArgs e)
+        {
+            formChonKhoa frm = new formChonKhoa();
+
+            List<string> danhSach = new List<string>()
+            {
+                "Công nghệ thông tin",
+                "Quản trị kinh doanh",
+                "Kế toán - Kiểm toán",
+                "Điện - Điện tử"
+            };
+
+            frm.LoadDanhSachKhoa(danhSach);
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                string khoaChon = frm.KhoaDaChon;
+                MessageBox.Show($"Bạn đã chọn khoa: {khoaChon}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        // Liên kết menu Chọn khoa trên giao diện thiết kế
+        private void chọnKhoaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mnuChonKhoa_Click(sender, e);
         }
     }
 }
