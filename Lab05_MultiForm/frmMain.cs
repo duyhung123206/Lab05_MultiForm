@@ -26,10 +26,28 @@ namespace Lab05_MultiForm
             child.Show();
         }
 
-        // Sự kiện click vào menu Sinh viên
+        // 1. Sự kiện mở form Chi tiết Sinh viên
         private void mnuSinhVien_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmChiTietSinhVien(null));
+        }
+
+        // 2. Hàm xử lý logic mở form Tìm kiếm chung
+        private void mnuTimKiem_Click(object sender, EventArgs e)
+        {
+            formTimKiem frm = new formTimKiem();
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                string tuKhoa = frm.TuKhoa;
+                MessageBox.Show($"Đã nhận từ khóa tìm kiếm: {tuKhoa}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        // 3. Hàm sự kiện liên kết trực tiếp với thanh Menu trên giao diện thiết kế
+        private void tìmKiếmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mnuTimKiem_Click(sender, e);
         }
     }
 }
