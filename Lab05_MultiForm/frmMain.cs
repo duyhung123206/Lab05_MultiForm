@@ -74,7 +74,13 @@ namespace Lab05_MultiForm
             mnuChonKhoa_Click(sender, e);
         }
 
-        // Sự kiện xác nhận đóng ứng dụng (chỉ có duy nhất 1 hàm này)
+        // Đồng hồ chạy thời gian thực trên StatusStrip (chỉ có duy nhất 1 hàm này)
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblDongHo.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        // Xác nhận đóng ứng dụng an toàn
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -86,7 +92,7 @@ namespace Lab05_MultiForm
 
             if (result == DialogResult.No)
             {
-                e.Cancel = true; // Không đóng ứng dụng nếu chọn No[cite: 17]
+                e.Cancel = true; // Hủy đóng ứng dụng nếu chọn No
             }
         }
     }
