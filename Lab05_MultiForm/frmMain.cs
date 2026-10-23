@@ -27,13 +27,11 @@ namespace Lab05_MultiForm
             child.Show();
         }
 
-        // 1. Sự kiện mở form Chi tiết Sinh viên
         private void mnuSinhVien_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmChiTietSinhVien(null));
         }
 
-        // 2. Hàm xử lý logic mở form Tìm kiếm
         private void mnuTimKiem_Click(object sender, EventArgs e)
         {
             formTimKiem frm = new formTimKiem();
@@ -45,13 +43,11 @@ namespace Lab05_MultiForm
             }
         }
 
-        // Liên kết menu Tìm kiếm trên giao diện thiết kế
         private void tìmKiếmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mnuTimKiem_Click(sender, e);
         }
 
-        // 3. Hàm xử lý logic mở form Chọn khoa
         private void mnuChonKhoa_Click(object sender, EventArgs e)
         {
             formChonKhoa frm = new formChonKhoa();
@@ -73,10 +69,25 @@ namespace Lab05_MultiForm
             }
         }
 
-        // Liên kết menu Chọn khoa trên giao diện thiết kế
         private void chọnKhoaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mnuChonKhoa_Click(sender, e);
+        }
+
+        // Sự kiện xác nhận đóng ứng dụng (chỉ có duy nhất 1 hàm này)
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn thoát ứng dụng không?",
+                "Xác nhận thoát",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true; // Không đóng ứng dụng nếu chọn No[cite: 17]
+            }
         }
     }
 }
