@@ -78,11 +78,24 @@ namespace Lab05_MultiForm
             lblTrangThai.Text = hopLe ? "Dữ liệu điểm hợp lệ" : "Kiểm tra điểm";
         }
 
-        // Sự kiện click nút Lưu
+        // Sự kiện click nút Lưu: Đóng gói dữ liệu và truyền sang Form chi tiết qua constructor
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (!ValidateInput()) return;
-            MessageBox.Show("Dữ liệu hợp lệ, tiến hành lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Tạo đối tượng SinhVien từ dữ liệu người dùng nhập
+            SinhVien sv = new SinhVien()
+            {
+                MaSV = txtMaSV.Text,
+                HoTen = txtHoTen.Text,
+                DiemTB = double.Parse(txtDiemTB.Text)
+            };
+
+            // Khởi tạo form chi tiết và truyền đối tượng sv qua constructor
+            frmChiTietSinhVien frm = new frmChiTietSinhVien(sv);
+
+            // Hiển thị form chi tiết lên màn hình
+            frm.ShowDialog();
         }
     }
 }
