@@ -16,7 +16,7 @@ namespace Lab05_MultiForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new formLogin());
         }
     }
 }
