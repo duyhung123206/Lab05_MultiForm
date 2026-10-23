@@ -7,19 +7,28 @@ namespace Lab05_MultiForm
     {
         private readonly SinhVien _sinhVien;
 
-        // Constructor nhận vào đối tượng SinhVien[cite: 17]
+        // Constructor mặc định (dành cho trường hợp gọi không truyền dữ liệu từ Menu chính)
+        public frmChiTietSinhVien()
+        {
+            InitializeComponent();
+        }
+
+        // Constructor nhận vào đối tượng SinhVien (dành cho Form1 truyền sang)[cite: 17]
         public frmChiTietSinhVien(SinhVien sinhVien)
         {
             InitializeComponent();
             _sinhVien = sinhVien;
         }
 
-        // Sự kiện Load form để hiển thị dữ liệu lên các Label tương ứng[cite: 17]
+        // Sự kiện Load form để hiển thị dữ liệu lên các Label[cite: 17]
         private void frmChiTietSinhVien_Load(object sender, EventArgs e)
         {
-            lblMa.Text = _sinhVien.MaSV;
-            lblHoTen.Text = _sinhVien.HoTen;
-            lblDiem.Text = _sinhVien.DiemTB.ToString("N2");
+            if (_sinhVien != null)
+            {
+                lblMa.Text = _sinhVien.MaSV;
+                lblHoTen.Text = _sinhVien.HoTen;
+                lblDiem.Text = _sinhVien.DiemTB.ToString("N2");
+            }
         }
     }
 }
